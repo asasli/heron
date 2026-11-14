@@ -1,0 +1,31 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# distributed as separate archives (docs/WEIGHTS.md, docs/DATA.md)
+weights/
+data/
+paper_products/pointing_ensemble/
+paper_products/pointing_ensemble_handoff/
+
+# outputs of runs
+results/
+runs/
+exports/
+logs/
+*.log
+nohup.out
+
+# the training records are kept
+!docs/provenance/**
+
+# checkpoints (ultralytics downloads yolo26n.pt for its AMP check during training)
+*.pt
+
+# build metadata of `pip install -e .`
+*.egg-info/
+build/
+.downloads/
+
+# local development environment
+.venv/
