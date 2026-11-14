@@ -1,0 +1,43 @@
+train 1000000, val 20000; sigma0=810.8
+UCBFlow: 785,128 params
+E  1 train=-1.586 val=-2.203 best=-2.203 lr=3.0e-04 *
+E  2 train=-2.438 val=-2.600 best=-2.600 lr=3.0e-04 *
+E  3 train=-3.019 val=-3.230 best=-3.230 lr=3.0e-04 *
+E  4 train=-3.370 val=-3.213 best=-3.230 lr=2.9e-04
+E  5 train=-3.631 val=-3.300 best=-3.300 lr=2.9e-04 *
+E  6 train=-3.837 val=-3.737 best=-3.737 lr=2.8e-04 *
+E  7 train=-4.031 val=-4.268 best=-4.268 lr=2.8e-04 *
+E  8 train=-4.217 val=-4.434 best=-4.434 lr=2.7e-04 *
+E  9 train=-4.636 val=-4.483 best=-4.483 lr=2.6e-04 *
+E 10 train=-4.906 val=-5.161 best=-5.161 lr=2.6e-04 *
+E 11 train=-5.132 val=-5.322 best=-5.322 lr=2.5e-04 *
+E 12 train=-5.295 val=-5.406 best=-5.406 lr=2.4e-04 *
+E 13 train=-5.470 val=-5.545 best=-5.545 lr=2.3e-04 *
+E 14 train=-5.559 val=-5.736 best=-5.736 lr=2.2e-04 *
+E 15 train=-5.655 val=-5.785 best=-5.785 lr=2.1e-04 *
+E 16 train=-5.812 val=-6.015 best=-6.015 lr=2.0e-04 *
+E 17 train=-5.941 val=-6.081 best=-6.081 lr=1.9e-04 *
+E 18 train=-6.149 val=-6.181 best=-6.181 lr=1.7e-04 *
+E 19 train=-6.277 val=-6.347 best=-6.347 lr=1.6e-04 *
+E 20 train=-6.454 val=-6.447 best=-6.447 lr=1.5e-04 *
+E 21 train=-6.530 val=-6.577 best=-6.577 lr=1.4e-04 *
+E 22 train=-6.655 val=-6.767 best=-6.767 lr=1.3e-04 *
+E 23 train=-6.765 val=-6.777 best=-6.777 lr=1.1e-04 *
+E 24 train=-6.830 val=-6.902 best=-6.902 lr=1.0e-04 *
+E 25 train=-6.927 val=-6.961 best=-6.961 lr=9.3e-05 *
+E 26 train=-7.006 val=-7.011 best=-7.011 lr=8.2e-05 *
+E 27 train=-7.078 val=-7.046 best=-7.046 lr=7.2e-05 *
+E 28 train=-7.161 val=-7.179 best=-7.179 lr=6.2e-05 *
+E 29 train=-7.237 val=-7.136 best=-7.179 lr=5.3e-05
+E 30 train=-7.307 val=-7.309 best=-7.309 lr=4.4e-05 *
+E 31 train=-7.371 val=-7.282 best=-7.309 lr=3.6e-05
+E 32 train=-7.424 val=-7.406 best=-7.406 lr=2.9e-05 *
+E 33 train=-7.482 val=-7.449 best=-7.449 lr=2.2e-05 *
+E 34 train=-7.526 val=-7.484 best=-7.484 lr=1.6e-05 *
+E 35 train=-7.558 val=-7.517 best=-7.517 lr=1.1e-05 *
+E 36 train=-7.590 val=-7.546 best=-7.546 lr=7.3e-06 *
+E 37 train=-7.610 val=-7.565 best=-7.565 lr=4.1e-06 *
+E 38 train=-7.631 val=-7.578 best=-7.578 lr=1.8e-06 *
+E 39 train=-7.637 val=-7.587 best=-7.587 lr=4.6e-07 *
+E 40 train=-7.646 val=-7.589 best=-7.589 lr=0.0e+00 *
+Done. best val NLL -7.589

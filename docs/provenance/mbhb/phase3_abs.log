@@ -1,0 +1,115 @@
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+  [val] 5000 samples (heterodyned, on-the-fly noise)
+  Preloading 5000 arrays (0.4 GB)... done
+  Adding fixed noise to val/test... done
+FD shape: (4096, 5)
+Computing normalization stats...
+FlowHet(NSF): 108,775,441 params | 11D PE | 4096 bins x 5 ch | n_meta=14
+Resumed from models/sbi_het_het_v13scale_r2_bestsky.pt (epoch 109); loaded 794 tensors (0 col-padded), skipped 0, 0 fresh
+UCB on-the-fly foreground: 2104 band bins, resolved n_ucb 0-40 + faint 0-500
+E  1  train=17.5192  val=21.0007  best=21.0007  skyNLL(tr/val)=-5.192/-4.807  lr=6.00e-06 *
+  [chunk] switching train set -> data_het_v6_c48
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E  5  train=-29.8310  val=-24.0666  best=-24.6384  skyNLL(tr/val)=-5.123/-4.812  lr=3.00e-05
+  [chunk] switching train set -> data_het_v6_c49
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 10  train=-31.4427  val=-27.0350  best=-28.4820  skyNLL(tr/val)=-5.100/-4.815  lr=6.00e-05
+  [chunk] switching train set -> data_het_v6_c50
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 15  train=-32.0644  val=-28.0628  best=-29.1367  skyNLL(tr/val)=-5.088/-4.834  lr=5.96e-05
+  [chunk] switching train set -> data_het_v6_c51
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 20  train=-32.5401  val=-29.2923  best=-29.6766  skyNLL(tr/val)=-5.087/-4.883  lr=5.85e-05
+  [chunk] switching train set -> data_het_v6_c52
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+  [chunk] switching train set -> data_het_v6_c53
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 25  train=-32.6831  val=-29.6121  best=-29.6766  skyNLL(tr/val)=-5.087/-4.884  lr=5.67e-05
+  [chunk] switching train set -> data_het_v6_c54
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 30  train=-33.1126  val=-28.3148  best=-30.3070  skyNLL(tr/val)=-5.097/-4.854  lr=5.43e-05
+  [chunk] switching train set -> data_het_v6_c55
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 35  train=-33.3146  val=-30.4547  best=-30.4547  skyNLL(tr/val)=-5.100/-4.896  lr=5.12e-05 *
+  [chunk] switching train set -> data_het_v6_c56
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 40  train=-33.6877  val=-29.0963  best=-30.4547  skyNLL(tr/val)=-5.124/-4.857  lr=4.76e-05
+  [chunk] switching train set -> data_het_v6_c57
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+  [chunk] switching train set -> data_het_v6_c58
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 45  train=-33.7187  val=-29.6851  best=-30.4547  skyNLL(tr/val)=-5.118/-4.905  lr=4.36e-05
+  [chunk] switching train set -> data_het_v6_c59
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 50  train=-34.0453  val=-30.2525  best=-30.8778  skyNLL(tr/val)=-5.137/-4.887  lr=3.93e-05
+  [chunk] switching train set -> data_het_v6_c60
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 55  train=-34.3857  val=-29.7679  best=-30.9212  skyNLL(tr/val)=-5.153/-4.893  lr=3.47e-05
+  [chunk] switching train set -> data_het_v6_c61
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 60  train=-34.6400  val=-30.7841  best=-30.9212  skyNLL(tr/val)=-5.157/-4.932  lr=3.00e-05
+  [chunk] switching train set -> data_het_v6_c62
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+  [chunk] switching train set -> data_het_v6_c63
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 65  train=-34.7228  val=-31.5541  best=-31.7254  skyNLL(tr/val)=-5.164/-4.967  lr=2.53e-05
+  [chunk] switching train set -> data_het_v6_c64
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 70  train=-35.1049  val=-29.3610  best=-31.7731  skyNLL(tr/val)=-5.175/-4.923  lr=2.07e-05
+  [chunk] switching train set -> data_het_v6_c65
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 75  train=-35.3881  val=-31.3562  best=-31.7731  skyNLL(tr/val)=-5.195/-4.974  lr=1.64e-05
+  [chunk] switching train set -> data_het_v6_c66
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 80  train=-35.6169  val=-29.1067  best=-32.6172  skyNLL(tr/val)=-5.204/-4.904  lr=1.24e-05
+  [chunk] switching train set -> data_het_v6_c67
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+  [chunk] switching train set -> data_het_v6_c68
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 85  train=-35.6794  val=-28.9628  best=-32.6172  skyNLL(tr/val)=-5.212/-4.914  lr=8.79e-06
+  [chunk] switching train set -> data_het_v6_c69
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 90  train=-35.8825  val=-30.9886  best=-32.6172  skyNLL(tr/val)=-5.214/-4.964  lr=5.73e-06
+  [chunk] switching train set -> data_het_v6_c70
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E 95  train=-36.0836  val=-31.9142  best=-32.6172  skyNLL(tr/val)=-5.226/-5.000  lr=3.27e-06
+  [chunk] switching train set -> data_het_v6_c71
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E100  train=-36.1706  val=-31.3338  best=-32.6172  skyNLL(tr/val)=-5.224/-4.980  lr=1.47e-06
+  [chunk] switching train set -> data_het_v6_c72
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+  [chunk] switching train set -> data_het_v6_c73
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E105  train=-36.2060  val=-30.6697  best=-32.6976  skyNLL(tr/val)=-5.233/-4.972  lr=3.69e-07
+  [chunk] switching train set -> data_het_v6_c74
+  [train] 200000 samples (heterodyned, on-the-fly noise)
+  Preloading 200000 arrays (16.4 GB)... done
+E110  train=-36.2349  val=-32.9114  best=-32.9114  skyNLL(tr/val)=-5.230/-5.024  lr=0.00e+00 *
+Done [het_v14abs]. Best val NLL: -32.9114
