@@ -1,0 +1,72 @@
+# HERON: the published configuration, as trained.
+#
+#   python -m heron.run --config config/heron.yaml --stage all
+#
+# Every number below is the value used for the released weights (training
+# scripts and logs of the original runs: docs/TRAINING_PROVENANCE.md).
+# Budget on one 48 GB GPU: detector 1.5 h; UCB data 1.3 h + flow 35 min;
+# MBHB data ~7 h per 10^7-sample set (two sets, ~850 GB each); alert flow
+# ~8.5 days over its four phases (about 23 min per 200k-sample epoch);
+# calibration set ~3 h.
+out: runs/paper
+device: cuda:0
+data_root: data/train              # the data stages write here; a trained bundle is validated on these test splits
+released_data_root: data           # test splits distributed with the release (`heron download testdata`),
+                                   # used when the released weights are validated; never written by training
+
+# ---------------------------------------------------------------- stage 1
+yolo:
+  dataset: {dir: data/train/yolo, n_train: 5000, n_val: 1000, n_test: 500, seed: 42}
+  train:   {epochs: 80, batch: 16, patience: 20, seed: 0, img_size: 640, workers: 8}
+
+# ---------------------------------------------------------------- stage 3
+ucb:
+  dataset: {dir: data/train/ucb, n_train: 1000000, n_val: 20000, n_test: 20000, seed: 42}
+  train:   {epochs: 40, batch: 1024, lr: 3.0e-4, seed: 0}
+
+# ---------------------------------------------------------------- stage 2
+mbhb:
+  # Two training sets of 10^7 heterodyned samples (base 200k + 49 chunks of
+  # 200k). `ridge`: truth-centred reference spins. `wide`: reference spins drawn
+  # from the prior (the final phase; its dataset_info.json is the one released
+  # with the weights). Seeds: `wide` is exactly the published set (base 90000,
+  # chunk i -> 90000 + i; regeneration is bit-identical). For `ridge`, chunks
+  # 64-96 used 70000 + i; the seeds of the base set and of chunks 48-63 were
+  # not logged, so the values below are equivalent, not identical, draws.
+  datasets:
+    ridge: {dir: data/train/mbhb_ridge, wide_spin_ref: false, n_train: 200000, n_val: 5000, n_test: 2000,
+            base_seed: 70000, chunk_seed0: 70000, chunk_first: 48, n_chunks: 49}
+    wide:  {dir: data/train/mbhb, wide_spin_ref: true, n_train: 200000, n_val: 5000, n_test: 2000,
+            base_seed: 90000, chunk_seed0: 90000, chunk_first: 1, n_chunks: 49}
+  arch: {enc_hidden: 384, enc_blocks: 12, context_dim: 768, n_transforms: 40,
+         flow_hidden: 768, flow_bins: 16, bank_k: 256}         # 108,775,441 parameters
+  batch: 256
+  weight_decay: 1.0e-3
+  sky_weight: 0.5
+  chunk_epochs: 4
+  # Each phase resumes from the best-sky checkpoint of the previous one.
+  phases:
+    # from scratch; the run was interrupted at epoch 152 of its 280-epoch schedule
+    - {tag: p1_scratch,  data: ridge, epochs: 280, stop_epoch: 152, lr: 1.5e-4, patience: 80, abs_spins: false}
+    # completes the anneal
+    - {tag: p2_anneal,   data: ridge, epochs: 130, lr: 1.0e-4, patience: 60, abs_spins: false}
+    # mass ratio and spins become absolute targets
+    - {tag: p3_abs,      data: ridge, epochs: 110, lr: 6.0e-5, patience: 60, abs_spins: true}
+    # prior-drawn reference spins (released model: best-sky checkpoint, epoch 128)
+    - {tag: p4_widespin, data: wide,  epochs: 130, lr: 6.0e-5, patience: 60, abs_spins: true}
+
+# ------------------------------------------------- post-hoc calibration map
+recal: {n_cal: 3000, seed_base_cal: 10000, n_test: 500, n_ucb: 20, n_per: 400, ref_scale: 1.0}
+
+# ------------------------------------------------------- pipeline + checks
+infer: {case: 1, n_ucb: 30, detector: oracle}
+validate:
+  n_ucb: 20
+  ref_scale: 1.0           # the calibration configuration (Fig. 3)
+  pp_events: 500
+  sky_testset: mbhb_ridge  # test split behind the published sky-area and robustness products
+  sky_stride: 4            # every 4th of its 2000 events
+  robust_events: 250
+  countdown_per_bin: 120
+  ucb_pp: 4000
+  subtract_n: 150

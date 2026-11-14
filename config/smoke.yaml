@@ -1,0 +1,48 @@
+# HERON smoke configuration: the complete training + validation code path of
+# config/heron.yaml at toy scale (about ten minutes on one GPU, < 1 GB).
+#
+#   python -m heron.run --config config/smoke.yaml --stage all
+#
+# Exercises stage execution and artifact hand-offs; models are not for inference.
+out: runs/smoke
+device: cuda:0
+data_root: runs/smoke/data
+
+yolo:
+  dataset: {dir: runs/smoke/data/yolo, n_train: 24, n_val: 8, n_test: 8, seed: 42}
+  train:   {epochs: 1, batch: 8, patience: 20, seed: 0, img_size: 640, workers: 2}
+
+ucb:
+  dataset: {dir: runs/smoke/data/ucb, n_train: 4096, n_val: 512, n_test: 512, seed: 42}
+  train:   {epochs: 2, batch: 512, lr: 3.0e-4, seed: 0}
+
+mbhb:
+  datasets:
+    ridge: {dir: runs/smoke/data/mbhb_ridge, wide_spin_ref: false, n_train: 256, n_val: 64, n_test: 64,
+            base_seed: 70000, chunk_seed0: 70000, chunk_first: 1, n_chunks: 1}
+    wide:  {dir: runs/smoke/data/mbhb, wide_spin_ref: true, n_train: 256, n_val: 64, n_test: 64,
+            base_seed: 90000, chunk_seed0: 90000, chunk_first: 1, n_chunks: 1}
+  arch: {enc_hidden: 32, enc_blocks: 2, context_dim: 64, n_transforms: 3,
+         flow_hidden: 64, flow_bins: 8, bank_k: 8}
+  batch: 64
+  weight_decay: 1.0e-3
+  sky_weight: 0.5
+  chunk_epochs: 1
+  phases:
+    - {tag: p1_scratch,  data: ridge, epochs: 3, stop_epoch: 2, lr: 1.5e-4, patience: 80, abs_spins: false}
+    - {tag: p2_anneal,   data: ridge, epochs: 2, lr: 1.0e-4, patience: 60, abs_spins: false}
+    - {tag: p3_abs,      data: ridge, epochs: 2, lr: 6.0e-5, patience: 60, abs_spins: true}
+    - {tag: p4_widespin, data: wide,  epochs: 2, lr: 6.0e-5, patience: 60, abs_spins: true}
+
+recal: {n_cal: 12, seed_base_cal: 10000, n_test: 8, n_ucb: 20, n_per: 100, ref_scale: 1.0}
+
+infer: {case: 1, n_ucb: 10, detector: oracle}
+validate:
+  n_ucb: 20
+  ref_scale: 1.0           # the calibration configuration (Fig. 3)
+  pp_events: 8
+  sky_stride: 8
+  robust_events: 6
+  countdown_per_bin: 2
+  ucb_pp: 256
+  subtract_n: 8
