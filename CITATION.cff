@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "HERON: HEterodyned RObust Neural inference for LISA"
+version: "1.0.0"
+date-released: "2026-11-12"
+authors:
+  - {family-names: Sasli, given-names: Argyro}
+  - {family-names: Karnesis, given-names: Nikolaos}
+  - {family-names: Katz, given-names: "Michael L."}
+  - {family-names: Ford, given-names: "K. E. Saavik"}
+  - {family-names: McKernan, given-names: Barry}
+  - {family-names: Karamanis, given-names: Minas}
+  - {family-names: Coughlin, given-names: "Michael W."}
+  - {family-names: Mandic, given-names: Vuk}
+  - {family-names: Stergioulas, given-names: Nikolaos}
+preferred-citation:
+  type: article
+  title: "LISA as a continuous early-warning instrument for massive black-hole binary mergers"
+  authors:
+    - {family-names: Sasli, given-names: Argyro}
+    - {family-names: Karnesis, given-names: Nikolaos}
+    - {family-names: Katz, given-names: "Michael L."}
+    - {family-names: Ford, given-names: "K. E. Saavik"}
+    - {family-names: McKernan, given-names: Barry}
+    - {family-names: Karamanis, given-names: Minas}
+    - {family-names: Coughlin, given-names: "Michael W."}
+    - {family-names: Mandic, given-names: Vuk}
+    - {family-names: Stergioulas, given-names: Nikolaos}
+  year: 2026
+  status: submitted

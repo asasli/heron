@@ -1,0 +1,33 @@
+# Installs the `heron` command and makes the packages importable from anywhere.
+# Install in editable mode from a checkout, inside the conda environment of
+# environment.yml (which provides the pinned dependencies):
+#
+#     pip install --no-deps -e .
+#
+# The package reads weights/, data/, config/ and paper_products/ from the
+# checkout, so a non-editable install is not supported.
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heron-lisa"
+version = "1.0.0"
+description = "HERON: HEterodyned RObust Neural inference for LISA (early warning for massive black-hole binary mergers)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Argyro Sasli"}]
+
+[project.scripts]
+heron = "heron.cli:main"
+
+[tool.setuptools]
+packages = ["heron", "yolo", "pe_smbhb", "pe_ucb", "pointing", "evaluation"]
+py-modules = ["config", "data_utils"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "numpy>=1.23", "scipy>=1.9", "PyYAML>=6"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

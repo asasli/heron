@@ -1,0 +1,23 @@
+# Stage 4 (pointing) environment: the public HyperWave package and its sampler.
+#
+#   conda env create -f environment-pointing.yml
+#   conda activate heron-pointing
+#
+# HyperWave provides the MBHB template in the sampling convention of stage 4,
+# the priors and the canonical sky-area estimator
+# (hyperwave.detectors.lisa.smbhb). The GPU waveform is the packaged bbhx wheel;
+# choose the wheel that matches your CUDA runtime (cuda11x or cuda12x) and pass
+# the same name to pointing/synergy_pe.py --force-backend.
+name: heron-pointing
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - git+https://github.com/asasli/HyperWave.git@2b03adcf07d339bf9d524ed5abdea20704b691ef
+      - eryn
+      - scikit-learn
+      - matplotlib
+      - bbhx-cuda12x
+      - cupy-cuda12x

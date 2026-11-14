@@ -1,0 +1,50 @@
+# HERON environment: stages 1-3 (detection, alert, catalogue + subtraction),
+# every validation and all training. Pinned to the configuration that
+# produced the published results.
+#
+#   conda env create -f environment.yml
+#   conda activate heron
+#   bash scripts/install_waveforms.sh        # BBHx + GBGPU GPU waveforms (needs nvcc)
+#   python -m heron.check                    # verifies the installation and the weights
+#
+# Requirements outside conda: an NVIDIA GPU (>= 24 GB for the alert flow; the
+# published runs used an RTX A6000 and an A100), a driver supporting CUDA 12
+# (PyTorch wheels) and a CUDA 11.x toolkit with `nvcc` for building the two
+# waveform packages (set CUDAHOME, default /usr/local/cuda). See docs/INSTALL.md.
+#
+# Stage 4 (pointing) uses the HyperWave package and lives in a separate
+# environment: environment-pointing.yml.
+name: heron
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9.15
+  - pip
+  - gsl=2.7
+  - lapack=3.6.1            # BBHx needs the lapacke headers of this version
+  - cudatoolkit=11.8
+  - cupy=11.4.0
+  - cython<3
+  - h5py=3.7.0
+  - pyyaml
+  - tqdm
+  - pip:
+      - numpy==1.25.2
+      - scipy==1.13.1
+      - matplotlib==3.9.4
+      - pandas==1.5.2
+      - pillow==11.3.0
+      - scikit-learn==1.4.0
+      - torch==2.8.0
+      - torchvision==0.23.0
+      - zuko==1.5.0                         # neural spline flows
+      - ultralytics==8.4.51                 # YOLO detector
+      - opencv-python==4.9.0.80
+      - healpy==1.17.3
+      - corner==2.2.1
+      - ChainConsumer==0.34.0
+      - astropy==5.2.1
+      - pytest
+      - attrs                               # imported by GBGPU
+      # PTMCMC utilities (TransformContainer); pinned commit
+      - git+https://github.com/mikekatz04/Eryn.git@5289664547ffde16af81e60c0f18fff7315489b6
