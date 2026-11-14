@@ -1,4 +1,4 @@
-# HERON: HEterodyned RObust Neural inference for LISA
+# HERON: LISA Global Fit with AI
 
 Code, model weights and data products for the paper *LISA as a continuous
 early-warning instrument for massive black-hole binary mergers* (Sasli et al.).
